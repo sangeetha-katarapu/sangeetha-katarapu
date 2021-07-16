@@ -23,10 +23,11 @@ export class AuthInterceptorsService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<any> {
     //console.log("req", req)
-      this.showLoader();
+    this.showLoader();
     var appService = this.injector.get(AuthenticationService)
     const headers = new HttpHeaders({
-      'Authorization': `${appService.getToken()}`
+      // 'Authorization': `${appService.getToken()}`,
+      'X-Requested-With': 'XMLHttpRequest'
     });
 
     const clone = req.clone({
