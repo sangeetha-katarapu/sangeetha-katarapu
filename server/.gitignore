@@ -1,0 +1,13 @@
+# Editor configuration files
+.vscode
+
+# Node.js dependencies
+node_modules
+
+# Build artifacts
+build
+
+# Log files
+loggers/consoleLogger
+loggers/serverLogger
+

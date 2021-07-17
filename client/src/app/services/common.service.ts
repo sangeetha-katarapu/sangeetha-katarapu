@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 // import { Headers } from '@angular/http';
 
 import { Router } from '@angular/router'
@@ -19,7 +19,7 @@ export class CommonService {
   //   return this.http.get('')
   //     .map(response =>);
   // }
-  
+
 
   // headers: HttpHeaders = new HttpHeaders({ 'X-Requested-With': 'XMLHttpRequest' });
 
@@ -32,5 +32,9 @@ export class CommonService {
         return response
       }),
     );
+  }
+  getTags(data: any) {
+
+    return this.http.post(`/api/common/commonUrl`, data);
   }
 }
