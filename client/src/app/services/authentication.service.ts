@@ -9,6 +9,8 @@ export interface UserDetails {
   first_name: string
   email: string
   password: string
+  exp: number
+  iat: number
 }
 
 @Injectable()
@@ -41,8 +43,10 @@ export class AuthenticationService {
   public isLoggedIn(): boolean {
     const user = this.getUserDetails()
     if (user) {
-      return 100000 > Date.now() / 1000
+      console.log("in isLoggedIn if",user)
+      return user.exp > Date.now() / 1000
     } else {
+      console.log("in isLoggedIn else")
       return false
     }
   }
@@ -54,10 +58,15 @@ export class AuthenticationService {
     }
     const decodedData = jwt_decode(this.token)
     console.log("decoded", decodedData)
-    sessionStorage.setItem('email', decodedData['emailId']);
-    sessionStorage.setItem('uname', decodedData['userName']);
-    sessionStorage.setItem('role', "1");
-    this.role = "1"
+    sessionStorage.setItem('uname', decodedData['username']);
+    if (decodedData['username'] == "admin_blog") {
+      sessionStorage.setItem('role', "2");
+      this.role = "2"
+    }
+    else {
+      sessionStorage.setItem('role', "1");
+      this.role = "1"
+    }
 
   }
 
@@ -68,7 +77,7 @@ export class AuthenticationService {
 
   }
 
-  
+
 
 
 }

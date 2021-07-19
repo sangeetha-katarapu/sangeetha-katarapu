@@ -1,10 +1,40 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
   <a routerLink="/home" class="logo-wrapper">
-    <!-- <img class="nav-logo" alt="Quadratyx" src="../../assets/q_logo.png"> -->
-    <h3>Sangi's Blog</h3>
+    <img class="nav-logo" alt="Blog" src="../../assets/whatisblog.png">
   </a>
-
   <span class="example-spacer"></span>
+  <!-- <a *ngIf="roleid==2" (click)="users()" ><span>Users</span></a> -->
+  <a *ngIf="roleid==1 || roleid==2" (click)="updateUser()">
+    <mat-icon class="nav-person-icon">person</mat-icon>
+    <span>{{uname}}</span>
+  </a>
+  <a *ngIf="roleid==1 || roleid==2" (click)="logout()">
+    <mat-icon class="nav-person-icon">logout</mat-icon>
+    <span>Logout</span>
+  </a>
+  <a (click)="checkLogin()">
+    <button mat-raised-button>
+      Get Started
+    </button>
+  </a>
+  <!-- <a [matMenuTriggerFor]="menu11" #trigger="matMenuTrigger" (mouseenter)="buttonEnter(trigger)"
+    (mouseleave)="buttonLeave(trigger)" class="nav-person-link" style="z-index:1050">
+    <mat-icon class="nav-person-icon">person</mat-icon>
+    <span>{{uname}}</span>
+  </a> -->
+
+  <!-- <mat-menu #menu11="matMenu" class="example-icon">
+    <span (mouseenter)="menuenter()" (mouseleave)="menuLeave(trigger)">
+      <a mat-menu-item routerLink="/timesheet/changePassword">
+        <mat-icon>edit</mat-icon>
+        <span>Change password</span>
+      </a>
+      <a mat-menu-item (click)="logout()" routerLink="/login" href="">
+        <mat-icon>keyboard_tab</mat-icon>
+        <span>Logout</span>
+      </a>
+    </span>
+  </mat-menu> -->
   <div fxLayout="row" fxShow="false" fxShow.gt-sm class="innerToolBar">
 
   </div>

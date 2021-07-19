@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { UsersComponent } from './components/users/users.component';
-import { AddusersComponent } from './components/addusers/addusers.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -47,16 +46,27 @@ import { AuthInterceptorsService } from './services/auth-interceptors.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthenticationService } from './services/authentication.service';
 import { LoaderComponent } from './components/loader/loader.component';
-import { NavbarComponent } from './components/navbar/navbar.component'
+import { NavbarComponent } from './components/navbar/navbar.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { MyblogsComponent } from './components/myblogs/myblogs.component';
+import { AdduserComponent } from './components/adduser/adduser.component';
+import { AddarticleComponent } from './components/addarticle/addarticle.component';
+import { EdituserComponent } from './components/edituser/edituser.component';
+import { ViewarticleComponent } from './components/viewarticle/viewarticle.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
     UsersComponent,
-    AddusersComponent,
     LoaderComponent,
-    NavbarComponent
+    NavbarComponent,
+    MyblogsComponent,
+    AdduserComponent,
+    AddarticleComponent,
+    EdituserComponent,
+    ViewarticleComponent
   ],
   imports: [
     BrowserModule,
@@ -93,6 +103,7 @@ import { NavbarComponent } from './components/navbar/navbar.component'
     MatDatepickerModule,
     MatSlideToggleModule,
     MatNativeDateModule,
+    IvyCarouselModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorsService, multi: true },

@@ -13,6 +13,7 @@ class CommonFunctions {
                     headers: jsonObj['options']['headers'],
                     body: jsonObj['options']['data']
                 });
+                serverLog.info("In callExtAPI json post is ", response)
                 const json = await response.json();
                 serverLog.info("In callExtAPI json post is ", json)
                 callback(json)
@@ -25,6 +26,8 @@ class CommonFunctions {
 
                 const dataRes = await response.json();
                 serverLog.info("In callExtAPI json get is ", dataRes)
+
+
                 callback(dataRes)
             }
 

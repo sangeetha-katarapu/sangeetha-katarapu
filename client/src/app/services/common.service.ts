@@ -33,8 +33,15 @@ export class CommonService {
       }),
     );
   }
-  getTags(data: any) {
+  getCommonData(data: any) {
 
     return this.http.post(`/api/common/commonUrl`, data);
+  }
+  getUserData(data: any) {
+
+    return this.http.post(`/api/common/users`, data);
+  }
+  login(userDetails: any) {
+    return this.http.post(`/api/common/login`, userDetails);
   }
 }

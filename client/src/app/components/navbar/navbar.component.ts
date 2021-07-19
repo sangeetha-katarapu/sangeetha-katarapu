@@ -1,8 +1,8 @@
-import { Component, OnInit, Input,Inject, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Inject, ViewChild } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export interface DialogData {
   animal: string;
   name: string;
@@ -11,7 +11,7 @@ export interface DialogData {
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
   @Input() showActiveCompo: boolean;
@@ -22,14 +22,15 @@ export class NavbarComponent implements OnInit {
   prevButtonTrigger: any;
 
   role: string;
-  roleid = window.sessionStorage.getItem('role');
-  uname = window.sessionStorage.getItem('uname');
+  roleid: any = window.sessionStorage.getItem('role');
+  uname: any = window.sessionStorage.getItem('uname');
+
   showMenu: any
   show: boolean = false;
 
   showActive: boolean = true
 
-  constructor(private authService: AuthenticationService, private router: Router,public dialog: MatDialog) { }
+  constructor(private authService: AuthenticationService, private router: Router, public dialog: MatDialog) { }
 
   animal: string;
   name: string;
@@ -48,7 +49,22 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     this.authService.logout();
   }
-  
+
+  checkLogin() {
+    var checkingVal = this.authService.isLoggedIn()
+    if (checkingVal) {
+      this.router.navigate(['myblogs'])
+    }
+    else {
+      this.router.navigate(['/login'])
+
+    }
+  }
+  updateUser(){
+    this.router.navigate(['/editUser'])
+
+  }
+
   toggle() {
     this.show = !this.show;
   }

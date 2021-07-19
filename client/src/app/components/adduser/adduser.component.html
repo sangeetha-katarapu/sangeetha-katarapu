@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+<h3 class="main-heading">Create Account</h3>
+<div class="container">
+
+  <div fxLayout="row" fxLayoutAlign="space-around">
+    <div class="addForm" fxLayout="column" fxLayoutAlign="space-around">
+
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="full-width" [ngClass]="{ 'has-error': submitted && f.username.errors }"
+          class="form-group clearfix">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="User Name" type="text" formControlName="username" class="form-control"
+              [ngClass]="{ 'has-error': submitted && f.username.errors }" >
+          </mat-form-field>
+          <div *ngIf="submitted && f.username.errors" class="help-block">
+            <div *ngIf="f.username.errors.required" class="validation-error">User Name is required</div>
+          </div>
+        </div>
+        <div class="full-width" [ngClass]="{ 'has-error': submitted && f.email.errors }" class="form-group clearfix">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Email Id" type="text" formControlName="email" class="form-control"
+              [ngClass]="{ 'has-error': submitted && f.email.errors }" >
+          </mat-form-field>
+          <div *ngIf="submitted && f.email.errors" class="help-block">
+            <div *ngIf="f.email.errors.required" class="validation-error">Email Id is required</div>
+            <div *ngIf="f.email.errors.email" class="validation-error">
+              Email must be a valid email address
+            </div>
+          </div>
+        </div>
+        <div *ngIf="access==true"  class="full-width" [ngClass]="{ 'has-error': submitted && f.password.errors }" class="form-group clearfix">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Password" type="text" formControlName="password" class="form-control"
+              [ngClass]="{ 'has-error': submitted && f.password.errors }">
+          </mat-form-field>
+          <div *ngIf="submitted && f.password.errors" class="help-block">
+            <div *ngIf="f.password.errors.required" class="validation-error">Password is required</div>
+            
+          </div>
+        </div>
+        <div *ngIf="access==true" class="full-width" [ngClass]="{ 'has-error': submitted && f.confirmPassword.errors }"
+          class="form-group clearfix">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Confirm Password" type="text" formControlName="confirmPassword"
+              class="form-control" [ngClass]="{ 'has-error': submitted && f.confirmPassword.errors }">
+          </mat-form-field>
+          <div *ngIf="submitted && f.confirmPassword.errors" class="help-block">
+            <div *ngIf="f.confirmPassword.errors.required" class="validation-error">Confirm Password is required</div>
+            
+          </div>
+        </div>
+
+
+
+        <div class="form-group" fxLayout="row" fxLayoutAlign="end">
+          <a mat-button routerLink="/myblogs">Cancel</a>
+          <button mat-raised-button class="">{{edit ? 'Update':'Register'}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -6,5 +6,7 @@ export const urlsData= {
     allFeed: "https://conduit.productionready.io/api/articles/feed",
     updateUser: "https://conduit.productionready.io/api/user",
     alltags: "https://conduit.productionready.io/api/tags",
+    myArticles:"https://conduit.productionready.io/api/articles?author=",
+    getUser: "https://conduit.productionready.io/api/user",
    
 }
