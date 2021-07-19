@@ -53,7 +53,7 @@ class CommonController {
             reqOpt['headers'] = { 'Content-Type': 'application/json', "Authorization": "Token " + req.body.req_token }
 
         commonFunctions.callExtAPI({ "options": reqOpt }, async function (resFromAPI: any) {
-            console.log("resFromKronos", resFromAPI, Object.keys(resFromAPI))
+            // console.log("resFromKronos", resFromAPI, Object.keys(resFromAPI))
             if (Object.keys(resFromAPI).includes("errors")) {
                 var errorResJson: any = {
                     "statusCode": "500",

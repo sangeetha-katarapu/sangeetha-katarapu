@@ -12,14 +12,14 @@ export class MyblogsComponent implements OnInit {
   feedData: any = []
   feedInnerData: any = { title: "", author: "", image: "", description: "", body: "" }
 
-  constructor(private router:Router,private commonService: CommonService) { }
+  constructor(private router: Router, private commonService: CommonService) { }
   ngOnInit(): void {
     this.getMyArticlesData()
   }
   getMyArticlesData() {
     var jsonObj = {}
     jsonObj['req_method'] = "GET"
-    jsonObj['req_url'] = urlsData.myArticles+sessionStorage.getItem("uname")
+    jsonObj['req_url'] = urlsData.myArticles + sessionStorage.getItem("uname")
     jsonObj['req_action'] = "getMyArticles"
     jsonObj['req_token'] = sessionStorage.getItem("token")
     this.commonService.getUserData(jsonObj).subscribe(
@@ -39,7 +39,27 @@ export class MyblogsComponent implements OnInit {
     console.log(this.feedData)
   }
 
-  addArticle(){
+  addArticle() {
     this.router.navigate(['addArticle'])
+  }
+
+  editArt(req_data: any) {
+
+  }
+  delArt(req_data: any) {
+    console.log(req_data)
+    var jsonObj = {}
+    jsonObj['req_method'] = "DELETE"
+    jsonObj['req_url'] = urlsData.allArticles + "/" + req_data.slug
+    jsonObj['req_action'] = "deleteArticle"
+    jsonObj['req_token'] = sessionStorage.getItem("token")
+    this.commonService.getUserData(jsonObj).subscribe(
+      res => {
+        console.log("getUserData", res)
+        this.feedData = []
+        this.getMyArticlesData()
+      },
+      err => console.error(err)
+    );
   }
 }
