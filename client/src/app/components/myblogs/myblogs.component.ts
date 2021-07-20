@@ -11,9 +11,10 @@ import { AuthenticationService } from '../../services/authentication.service';
 export class MyblogsComponent implements OnInit {
 
   feedData: any = []
+  showArticle: boolean = false
   feedInnerData: any = { title: "", author: "", image: "", description: "", body: "" }
 
-  constructor(private router: Router, private commonService: CommonService,private auth:AuthenticationService) { }
+  constructor(private router: Router, private commonService: CommonService, private auth: AuthenticationService) { }
   ngOnInit(): void {
     this.getMyArticlesData()
   }
@@ -31,13 +32,18 @@ export class MyblogsComponent implements OnInit {
       err => console.error(err)
     );
   }
-
   createArticleData(req_data: any) {
     for (var i = 0; i < req_data.articles.length; i++) {
       req_data.articles[i]['id'] = i + 1
       this.feedData.push(req_data.articles[i])
     }
     console.log(this.feedData)
+    if (this.feedData.length == 0) {
+      this.showArticle = false
+    }
+    else {
+      this.showArticle = true
+    }
   }
 
   addArticle() {
@@ -45,12 +51,13 @@ export class MyblogsComponent implements OnInit {
   }
 
   editArt(req_data: any) {
-console.log("inedit",req_data)
+    console.log("inedit", req_data)
     this.auth.modifyArtID({
       "art_slug": req_data['slug'],
     })
     this.router.navigate(['editArticle']);
   }
+
   delArt(req_data: any) {
     console.log(req_data)
     var jsonObj = {}
@@ -66,5 +73,12 @@ console.log("inedit",req_data)
       },
       err => console.error(err)
     );
+  }
+
+  viewArticle(req_data:any){
+    this.auth.modifyArtID({
+      "art_slug": req_data['slug'],
+    })
+    this.router.navigate(['viewArticle']);
   }
 }

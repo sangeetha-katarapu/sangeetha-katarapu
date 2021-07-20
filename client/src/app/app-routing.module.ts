@@ -7,11 +7,14 @@ import { MyblogsComponent } from './components/myblogs/myblogs.component';
 import { UsersComponent } from './components/users/users.component';
 import { AdduserComponent } from './components/adduser/adduser.component';
 import { AddarticleComponent } from './components/addarticle/addarticle.component';
+import { ViewarticleComponent } from './components/viewarticle/viewarticle.component';
 
 
 const routes: Routes = [
   { path: 'myblogs', component: MyblogsComponent, canActivate: [AuthGuardService], data: { roles: ['admin', 'user'] } },
   { path: 'addArticle', component: AddarticleComponent, canActivate: [AuthGuardService], data: { roles: ['admin','user'] } },
+  { path: 'viewArticle', component: ViewarticleComponent, canActivate: [AuthGuardService], data: { roles: ['admin', 'user'] } },
+
   { path: 'editArticle', component: AddarticleComponent, canActivate: [AuthGuardService], data: { roles: ['admin','user'] } },
   { path: 'editUser', component: AdduserComponent, canActivate: [AuthGuardService], data: { roles: ['admin','user'] } },
   { path: 'signUp', component: AdduserComponent},

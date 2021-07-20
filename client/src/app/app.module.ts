@@ -51,7 +51,6 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { MyblogsComponent } from './components/myblogs/myblogs.component';
 import { AdduserComponent } from './components/adduser/adduser.component';
 import { AddarticleComponent } from './components/addarticle/addarticle.component';
-import { EdituserComponent } from './components/edituser/edituser.component';
 import { ViewarticleComponent } from './components/viewarticle/viewarticle.component';
 
 @NgModule({
@@ -65,8 +64,7 @@ import { ViewarticleComponent } from './components/viewarticle/viewarticle.compo
     MyblogsComponent,
     AdduserComponent,
     AddarticleComponent,
-    EdituserComponent,
-    ViewarticleComponent
+    ViewarticleComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,24 @@
+
+.mat-card-image {
+    width: calc(60% + 30px);
+}
+.imgCls{
+    height: 300px;
+    width: 300px;
+}
+
+.mat-card-header .mat-card-title {
+    font-size: 35px;
+    margin-bottom: 40px;
+    margin-top: 5%;
+}
+.bold{
+    font-weight: bold !important;
+}
+
+.mat-card-header{
+    
+    border: 3px solid gainsboro;
+    border-radius: 10px;
+    margin-bottom: 1%;
+}
