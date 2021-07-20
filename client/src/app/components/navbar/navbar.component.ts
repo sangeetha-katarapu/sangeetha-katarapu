@@ -62,7 +62,9 @@ export class NavbarComponent implements OnInit {
   }
   getBlogs(){
     this.router.navigate(['/myblogs'])
-
+  }
+  goHome(){
+    this.router.navigate(['/home'])
   }
   updateUser(){
     this.router.navigate(['/editUser'])

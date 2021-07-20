@@ -27,16 +27,41 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <mat-card-actions>
-        <button mat-button>
-          <mat-icon (click)="changeLikeIcon()" aria-label="Example icon-button with a like icon">
-            {{art_like}}</mat-icon> {{art_count}}
-        </button>
-        <button mat-button>
-          <mat-icon (click)="changeSaveIcon()" aria-label="Example icon-button with a heart icon">
-            {{art_share}}</mat-icon>
-        </button>
-      </mat-card-actions>
+      <button mat-button>
+        <mat-icon (click)="changeLikeIcon()" aria-label="Example icon-button with a like icon">
+          {{art_like}}</mat-icon> {{art_count}}
+      </button>
+      <button mat-button>
+        <mat-icon (click)="changeSaveIcon()" aria-label="Example icon-button with a heart icon">
+          {{art_share}}</mat-icon>
+      </button>
+
     </mat-card-actions>
+    <div class="commBlock">
+      <div>
+        <div fxFlex="70">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Add a comment</mat-label>
+            <textarea [(ngModel)]="commentVal" matInput placeholder="Ex. It makes me feel..."></textarea>
+          </mat-form-field>
+
+        </div>
+        <div fxFlex="30" style="margin-left:1%;text-align: start;"><button mat-raised-button color="primary"
+            (click)="addCom()">Post</button></div>
+      </div>
+      <div *ngFor="let com of commentData">
+        <div fxFlex="70">
+          <mat-form-field class="full-width" appearance="fill">
+            <input matInput value="{{com.body}}" [disabled]="true">
+          </mat-form-field>
+        </div>
+        <div fxFlex="30" style="margin-left:1%;text-align: start;">
+          <button mat-raised-button color="primary" *ngIf="com.showDel" (click)="delCom(com)">
+            <mat-icon> delete</mat-icon>
+          </button>
+
+        </div>
+      </div>
+    </div>
   </mat-card>
 </div>
