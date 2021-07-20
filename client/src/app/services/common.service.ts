@@ -15,24 +15,8 @@ import { map } from "rxjs/operators";
 export class CommonService {
 
   constructor(private http: HttpClient, private router: Router) { }
-  // getDat1a(): Observable<any> {
-  //   return this.http.get('')
-  //     .map(response =>);
-  // }
 
 
-  // headers: HttpHeaders = new HttpHeaders({ 'X-Requested-With': 'XMLHttpRequest' });
-
-
-  getArticles(): Observable<any> {
-
-    return this.http.get('https://conduit.productionready.io/api/articles').pipe(
-      map((response: any) => {
-        // console.log("response",response)
-        return response
-      }),
-    );
-  }
   getCommonData(data: any) {
 
     return this.http.post(`/api/common/commonUrl`, data);
@@ -44,4 +28,6 @@ export class CommonService {
   login(userDetails: any) {
     return this.http.post(`/api/common/login`, userDetails);
   }
+
+  
 }

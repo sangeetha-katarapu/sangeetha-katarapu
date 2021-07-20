@@ -29,7 +29,10 @@ export class HomeComponent implements OnInit {
   public twoIcon = 'bookmark_border';
   public twoIcon1 = 'bookmark_border';
   public twoIcon2 = 'bookmark';
-
+  now_cli: any = ""
+  now_temp: any = ""
+  now_pre: any = ""
+  now_hum: any = ""
   ngOnInit(): void {
     // this.getTagsData()
     this.getArticlesData()
@@ -55,6 +58,7 @@ export class HomeComponent implements OnInit {
       res => {
         console.log("getCommonData", res)
         this.createArticleData(res)
+        this.getWeatherData()
       },
       err => console.error(err)
     );
@@ -102,5 +106,22 @@ export class HomeComponent implements OnInit {
     this.snackBar.open(msg, "Close", {
       duration: dur,
     });
+  }
+
+  getWeatherData(){
+    var jsonObj = {}
+    jsonObj['req_method'] = "GET"
+    jsonObj['req_url'] = urlsData.weatherUrl
+    this.commonService.getCommonData(jsonObj).subscribe(
+      res => {
+        console.log("getWeatherData", res)
+        this.now_cli = res['weather'][0].description
+        this.now_temp=res['main'].temp
+        this.now_pre = res['main'].pressure
+        this.now_hum = res['main'].humidity
+        
+      },
+      err => console.error(err)
+    );
   }
 }
