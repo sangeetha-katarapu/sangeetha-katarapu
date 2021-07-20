@@ -11,7 +11,6 @@ import commonFunctions from '../helper/commonFunctions'
 class CommonController {
 
     public commonFunctions(req: Request, res: Response) {
-        console.log("req", req.body)
         var reqOpt: any = {}
         var reqBody = req.body.req_body
         reqOpt = {
@@ -39,7 +38,6 @@ class CommonController {
 
     }
     public userFunctions(req: Request, res: Response) {
-        console.log("in user", req.body)
         var reqOpt: any = {}
         var reqBody = req.body.req_body
         reqOpt = {

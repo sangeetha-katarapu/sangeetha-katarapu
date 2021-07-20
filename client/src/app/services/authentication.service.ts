@@ -59,14 +59,9 @@ export class AuthenticationService {
     const decodedData = jwt_decode(this.token)
     console.log("decoded", decodedData)
     sessionStorage.setItem('uname', decodedData['username']);
-    if (decodedData['username'] == "admin_blog") {
-      sessionStorage.setItem('role', "2");
-      this.role = "2"
-    }
-    else {
       sessionStorage.setItem('role', "1");
       this.role = "1"
-    }
+    
 
   }
 
@@ -77,7 +72,12 @@ export class AuthenticationService {
 
   }
 
+private artID = new BehaviorSubject('');
+  ArtIDInfo = this.artID.asObservable();
 
+  modifyArtID(flag: any) {
+    this.artID.next(flag)
+  }
 
 
 }

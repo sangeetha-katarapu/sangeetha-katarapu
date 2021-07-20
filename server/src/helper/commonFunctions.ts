@@ -7,7 +7,7 @@ class CommonFunctions {
         try {
             serverLog.info("in callExtAPI req", jsonObj)
             let fetch = require('node-fetch');
-            if (jsonObj['options']['method'] == "POST") {
+            if (jsonObj['options']['method'] == "POST"||jsonObj['options']['method'] == "PUT") {
                 const response = await fetch(jsonObj['options']['url'], {
                     method: jsonObj['options']['method'],
                     headers: jsonObj['options']['headers'],

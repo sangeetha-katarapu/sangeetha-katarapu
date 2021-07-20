@@ -99,8 +99,9 @@ export class AdduserComponent implements OnInit {
 
 
         var jsonObj = {}
-        jsonObj['req_method'] = "POST"
+        jsonObj['req_method'] = "PUT"
         jsonObj['req_url'] = urlsData.updateUser
+        jsonObj['req_token'] = sessionStorage.getItem("token")
         jsonObj['req_action'] = "updateUser"
         var jsonBdy = { "user": { "email": this.userForm.value.email } }
         jsonObj['req_body'] = jsonBdy

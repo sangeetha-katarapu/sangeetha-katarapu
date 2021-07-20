@@ -7,7 +7,7 @@ export class AuthGuardService implements CanActivate {
 
   private roleStr = {
     "1": "user",
-    "2": "admin"
+    // "2": "admin"
   }
 
   constructor(private auth: AuthenticationService, private router: Router) { }

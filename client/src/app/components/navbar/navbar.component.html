@@ -4,6 +4,9 @@
   </a>
   <span class="example-spacer"></span>
   <!-- <a *ngIf="roleid==2" (click)="users()" ><span>Users</span></a> -->
+  <a *ngIf="roleid==1 || roleid==2" (click)="getBlogs()">
+    <span>Blogs</span>
+  </a>
   <a *ngIf="roleid==1 || roleid==2" (click)="updateUser()">
     <mat-icon class="nav-person-icon">person</mat-icon>
     <span>{{uname}}</span>

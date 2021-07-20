@@ -12,8 +12,8 @@ import { AddarticleComponent } from './components/addarticle/addarticle.componen
 const routes: Routes = [
   { path: 'myblogs', component: MyblogsComponent, canActivate: [AuthGuardService], data: { roles: ['admin', 'user'] } },
   { path: 'addArticle', component: AddarticleComponent, canActivate: [AuthGuardService], data: { roles: ['admin','user'] } },
+  { path: 'editArticle', component: AddarticleComponent, canActivate: [AuthGuardService], data: { roles: ['admin','user'] } },
   { path: 'editUser', component: AdduserComponent, canActivate: [AuthGuardService], data: { roles: ['admin','user'] } },
-
   { path: 'signUp', component: AdduserComponent},
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },

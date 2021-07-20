@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from '../../services/common.service';
 import { urlsData } from '../../../assets/clientConfig'
+import { AuthenticationService } from '../../services/authentication.service';
 @Component({
   selector: 'app-myblogs',
   templateUrl: './myblogs.component.html',
@@ -12,7 +13,7 @@ export class MyblogsComponent implements OnInit {
   feedData: any = []
   feedInnerData: any = { title: "", author: "", image: "", description: "", body: "" }
 
-  constructor(private router: Router, private commonService: CommonService) { }
+  constructor(private router: Router, private commonService: CommonService,private auth:AuthenticationService) { }
   ngOnInit(): void {
     this.getMyArticlesData()
   }
@@ -44,7 +45,11 @@ export class MyblogsComponent implements OnInit {
   }
 
   editArt(req_data: any) {
-
+console.log("inedit",req_data)
+    this.auth.modifyArtID({
+      "art_slug": req_data['slug'],
+    })
+    this.router.navigate(['editArticle']);
   }
   delArt(req_data: any) {
     console.log(req_data)

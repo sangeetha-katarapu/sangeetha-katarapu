@@ -60,6 +60,10 @@ export class NavbarComponent implements OnInit {
 
     }
   }
+  getBlogs(){
+    this.router.navigate(['/myblogs'])
+
+  }
   updateUser(){
     this.router.navigate(['/editUser'])
 
